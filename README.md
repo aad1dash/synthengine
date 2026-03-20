@@ -6,7 +6,7 @@
 [![Built with Vite](https://img.shields.io/badge/Built%20with-Vite-646CFF.svg)](https://vitejs.dev)
 [![Three.js](https://img.shields.io/badge/Three.js-000000.svg)](https://threejs.org)
 
-<!-- TODO: Add live demo link once Vercel is set up -->
+[**Live Demo**](https://synthengine-khaki.vercel.app/)
 
 <!-- Add screenshot or GIF here: ![Synthengine screenshot](screenshot.png) -->
 
