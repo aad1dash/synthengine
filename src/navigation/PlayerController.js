@@ -32,6 +32,12 @@ export class PlayerController {
     this.headBobPhase = 0;
     this.verticalVelocity = 0;
 
+    // Cached vectors to avoid per-frame allocations
+    this._direction = new THREE.Vector3();
+    this._forward = new THREE.Vector3();
+    this._right = new THREE.Vector3();
+    this._fwd = new THREE.Vector3();
+
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
     this._onMouseMove = this._onMouseMove.bind(this);
@@ -99,9 +105,9 @@ export class PlayerController {
     if (!this.isLocked) return;
 
     const speed = this.isRunning ? RUN_SPEED : MOVE_SPEED;
-    const direction = new THREE.Vector3();
-    const forward = new THREE.Vector3();
-    const right = new THREE.Vector3();
+    const direction = this._direction.set(0, 0, 0);
+    const forward = this._forward;
+    const right = this._right;
 
     // Get camera forward/right in world space (ignore pitch for movement)
     forward.setFromMatrixColumn(this.camera.matrix, 0);
@@ -154,9 +160,7 @@ export class PlayerController {
 
   /** Get forward direction vector */
   getForward() {
-    const fwd = new THREE.Vector3(0, 0, -1);
-    fwd.applyQuaternion(this.camera.quaternion);
-    return fwd;
+    return this._fwd.set(0, 0, -1).applyQuaternion(this.camera.quaternion);
   }
 
   /** Get up vector */

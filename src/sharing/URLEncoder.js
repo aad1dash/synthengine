@@ -57,6 +57,9 @@ export class URLEncoder {
         const tx = db.transaction('texts', 'readwrite');
         tx.objectStore('texts').put({ key, text, createdAt: Date.now() });
       };
+      req.onerror = () => {
+        console.warn('IndexedDB store failed:', req.error);
+      };
     } catch (e) {
       console.warn('IndexedDB store failed:', e);
     }
