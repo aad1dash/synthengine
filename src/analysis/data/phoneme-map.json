@@ -1,0 +1,8 @@
+{
+  "vowels": ["a", "e", "i", "o", "u", "y"],
+  "plosives": ["b", "d", "g", "k", "p", "t"],
+  "fricatives": ["f", "v", "s", "z", "h", "th", "sh"],
+  "nasals": ["m", "n", "ng"],
+  "sibilants": ["s", "z", "sh", "ch"],
+  "liquids": ["l", "r"]
+}
